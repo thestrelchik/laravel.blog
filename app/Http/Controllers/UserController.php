@@ -27,7 +27,11 @@ class UserController extends Controller
     ]);
 
     if (Auth::attempt($validated)) {
-        return redirect()->route('admin.main.index');
+        if (Auth::user()->is_admin) {
+            return redirect()->route('admin.main.index');
+        } else {
+            return redirect()->route('home');
+        }
     }
 
     return redirect()->back()->with('error', 'Incorrect email/password');
