@@ -1,5 +1,7 @@
 @extends('admin.layouts.default')
 
+@section('title', 'Dashboard')
+
 @section('content')
 
     <main class="app-main"> 
