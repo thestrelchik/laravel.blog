@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <main class="app-main"> 
+     
             <div class="app-content-header"> <!--begin::Container-->
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
@@ -74,6 +74,6 @@
                     </div> <!--end::Row--> 
                 </div> <!--end::Container-->
             </div> <!--end::App Content-->
-        </main> <!--end::App Main--> 
+        
 
 @endsection
