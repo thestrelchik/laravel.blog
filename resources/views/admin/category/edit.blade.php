@@ -1,6 +1,6 @@
 @extends('admin.layouts.default')
 
-@section('title', 'New category')
+@section('title', 'Edit category')
 
 @section('content')
 
@@ -9,14 +9,14 @@
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">New category</h3>
+                            <h3 class="mb-0">Edit category</h3>
                         </div>
                          <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-end">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Home</a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('categories.index') }}">Categories</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    New category
+                                    Edit category
                                 </li>
                             </ol>
                         </div>
@@ -30,24 +30,25 @@
                         <div class="col-md-12">
                            <div class="card card-warning card-outline mb-4"> <!--begin::Header-->
                                 <div class="card-header">
-                                    <div class="card-title">New category</div>
+                                    <div class="card-title">Edit category: <strong>{{ $category->title }}</strong></div>
                                 </div> <!--end::Header--> 
 
-                                <form action="{{ route('categories.store') }}" method="POST">
+                                <form action="{{ route('categories.update', ['category' => $category->id]) }}" method="POST">
                                     @csrf
+                                    @method('PUT')
 
                                     <div class="card-body">
                                         <div class="row mb-3"> 
                                             <label for="title" class="col-sm-2 col-form-label">Category name</label>
                                             <div class="col-sm-10"> 
-                                                <input type="text" name="title" class="form-control" id="title" value="{{ old('title') }}" required> 
+                                                <input type="text" name="title" class="form-control" id="title" value="{{ $category->title }}"required> 
                                             </div>
                                         </div>
 
                                         <div class="row mb-3"> 
                                             <label for="meta_desc" class="col-sm-2 col-form-label">Meta description</label>
                                             <div class="col-sm-10"> 
-                                                <input type="text" name="meta_desc" class="form-control" id="meta_desc" value="{{ old('meta_desc') }}"> 
+                                                <input type="text" name="meta_desc" class="form-control" id="meta_desc" value="{{ $category->meta_desc}}"> 
                                             </div>
                                         </div>
 
