@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\Admin\Postcontroller;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminMiddleware;
@@ -23,6 +24,7 @@ Route::prefix('admin')->middleware('admin')->group(function() {
     Route::get('/', [MainController::class, 'index'])-> name('admin.main.index');
 
     Route::resource('/categories', CategoryController::class);
+    Route::resource('/posts', Postcontroller::class);
 
 });
 
