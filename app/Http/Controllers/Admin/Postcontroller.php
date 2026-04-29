@@ -38,7 +38,16 @@ class Postcontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => ['required', 'max:255'],
+            'meta_desc' => ['nullable', 'max:255'],
+            'content' => ['required'],
+            'category_id' => ['required', 'exists:categories,id'],
+        ]);
+
+        Post::query()->create($validated);
+
+        return redirect()->route('posts.index')->with('success', 'Post added successfully');
     }
 
     /**
