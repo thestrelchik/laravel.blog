@@ -10,7 +10,7 @@ class Post extends Model
 {
     use Sluggable;
 
-    protected $fillable = ['title', 'metadesc', 'content', 'category_id', 'thumb'];
+    protected $fillable = ['title', 'meta_desc', 'content', 'category_id', 'thumb'];
 
     public function sluggable(): array
     {
