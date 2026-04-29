@@ -16,6 +16,17 @@
     <link rel="stylesheet" href="{{  asset('assets/admin/css/adminlte.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous"><!-- jsvectormap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css" integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous">
+    <style>
+    .cke_notifications_area {
+        display: none;
+    }
+
+    label.required::before {
+            content: "* ";
+            color: #ff0000;
+            font-weight: 700;
+        }
+    </style>
 </head> 
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
@@ -212,6 +223,7 @@
     <script src="{{ asset('assets/admin/js/adminlte.js') }}"></script> 
     <script src="{{ asset('assets/jquery-4.0.0.min.js') }}"></script> 
     <script src="{{ asset('assets/admin/js/main.js') }}"></script> 
+    <script src="{{ asset('assets/admin/ckeditor/ckeditor.js') }}"></script> 
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js" integrity="sha256-ipiJrswvAR4VAx/th+6zWsdeYmVae0iJuiR+6OqHJHQ=" crossorigin="anonymous"></script> <!-- sortablejs -->
     <script>
         const connectedSortables =
@@ -397,6 +409,7 @@
         );
         sparkline3.render();
     </script> <!--end::Script-->
+
 
 </body><!--end::Body-->
 

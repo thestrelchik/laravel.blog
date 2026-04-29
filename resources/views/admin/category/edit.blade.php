@@ -39,7 +39,7 @@
 
                                     <div class="card-body">
                                         <div class="row mb-3"> 
-                                            <label for="title" class="col-sm-2 col-form-label">Category name</label>
+                                            <label for="title" class="col-sm-2 col-form-label required">Category name</label>
                                             <div class="col-sm-10"> 
                                                 <input type="text" name="title" class="form-control" id="title" value="{{ $category->title }}"required> 
                                             </div>
