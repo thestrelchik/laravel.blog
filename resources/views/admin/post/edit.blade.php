@@ -1,20 +1,20 @@
 @extends('admin.layouts.default')
 
-@section('title', 'New post')
+@section('title', 'Edit post')
 
 @section('content')
     <div class="app-content-header"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
             <div class="row">
                 <div class="col-sm-6">
-                    <h3 class="mb-0">New post</h3>
+                    <h3 class="mb-0">Edit post</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('posts.index') }}">Posts</a></li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            New post
+                            Edit post
                         </li>
                     </ol>
                 </div>
@@ -24,8 +24,9 @@
     <div class="app-content"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
 
-            <form method="post" action="{{ route('posts.store') }}">
+            <form method="post" action="{{ route('posts.update', ['post' => $post ->id]) }}">
                 @csrf
+                @method('PUT')
                 <div class="row"> <!--begin::Col-->
 
                     <div class="col-md-8">
@@ -38,21 +39,21 @@
                                     <label for="title" class="form-label required">Post
                                         name</label>
                                     <input type="text" name="title" class="form-control" id="title"
-                                           value="{{ old('title') }}">
+                                           value="{{ $post->title }}">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="meta_desc" class="form-label">Meta
                                         description</label>
                                     <input type="text" name="meta_desc" class="form-control" id="meta_desc"
-                                           value="{{ old('meta_desc') }}">
+                                           value="{{ $post->meta_desc }}">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="content"
                                            class="form-label required">Content</label>
                                     <textarea class="form-control ckeditor" name="content" id="content" cols="30"
-                                              rows="10">{{ old('content') }}</textarea>
+                                              rows="10">{{ $post->content }}</textarea>
                                 </div>
 
                             </div>
@@ -71,8 +72,9 @@
                                     <label for="category_id"
                                            class="form-label required">Category</label>
                                     <select name="category_id" id="category_id" class="form-select">
+
                                         @foreach($categories as $category_id => $category_title)
-                                            <option value="{{ $category_id }}">{{ $category_title }}</option>
+                                            <option value="{{ $category_id }}" @selected($post->category_id == $category_id)>{{ $category_title }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -81,7 +83,12 @@
                                     <input type="hidden" id="thumb" name="thumb" value="">
                                     <button type="button" class="btn btn-outline-primary popup_selector" data-inputid="thumb">Post Image</button>
 
-                                    <div class="post-thumb mt-3"></div>
+                                    <div class="post-thumb mt-3">
+                                        @if ($post->thumb)
+                                            <img src="/{{ $post->thumb }}" alt="" width="200">
+                                            
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
 
