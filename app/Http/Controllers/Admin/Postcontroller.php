@@ -43,6 +43,7 @@ class Postcontroller extends Controller
             'meta_desc' => ['nullable', 'max:255'],
             'content' => ['required'],
             'category_id' => ['required', 'exists:categories,id'],
+            'thumb' => ['nullable', 'string', 'max:255'],
         ]);
 
         Post::query()->create($validated);
